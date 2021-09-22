@@ -54,6 +54,7 @@ void initMenu() {
     setSortFunction(productosPorTipo, lower_than_string);
     
     int choice;
+    char* buscar = (char*)malloc(sizeof(char)*128);
 
     while(choice != 0) {
         printf(" ---------------------------------------------------------------------- \n");
@@ -85,13 +86,19 @@ void initMenu() {
                 anadirProducto(productos, productosPorMarca, productosPorTipo);
                 break;
             case 4:
-                buscarPorCriterio(productosPorTipo, "aseo");
+                printf("Ingrese el tipo de producto que desea buscar\n");
+                scanf("%s", buscar);
+                buscarPorCriterio(productosPorTipo, buscar);
                 break;
             case 5:
-                buscarPorCriterio(productosPorMarca, "ballerina");
+                printf("Ingrese la marca que desea buscar\n");
+                scanf("%s", buscar);
+                buscarPorCriterio(productosPorMarca, buscar);
                 break;
             case 6:
-                buscarPorCriterio(productos, "shampoo 1 L");
+                printf("Ingrese el nombre del producto que desea buscar\n");
+                scanf("%s", buscar);
+                buscarPorCriterio(productos, buscar);
                 break;
             case 7:
                 break;
