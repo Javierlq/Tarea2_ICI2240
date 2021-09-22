@@ -96,9 +96,9 @@ void initMenu() {
                 buscarPorCriterio(productosPorMarca, buscar);
                 break;
             case 6:
-                printf("Ingrese el nombre del producto que desea buscar\n");
-                scanf("%s", buscar);
-                buscarPorCriterio(productos, buscar);
+                printf("Ingrese el nombre del producto que desea buscar (REVISAR LA BUSQUEDA POR NOMBRE DE PRODUCTO)\n");
+                //scanf("%s", buscar);
+                //buscarPorCriterio(productos, buscar);
                 break;
             case 7:
                 break;
