@@ -169,3 +169,66 @@ void buscarPorCriterio(Map* criterio, char* key) {
         auxProducto = next(criterioList);
     }
 }
+
+void anadirProducto(Map* productos,Map* productosPorMarca,Map* productosPorTipo)
+{
+    char* nombre = (char*)malloc(sizeof(char)*256);
+    char* marca = (char*)malloc(sizeof(char)*256);
+    char* tipo = (char*)malloc(sizeof(char)*256);
+    char* cantidad = (char*)malloc(sizeof(char)*10);
+    char* precio = (char*)malloc(sizeof(char)*10);
+
+    printf("Ingrese el nombre del producto: \n");
+    scanf("%s", nombre);
+    printf("Ingrese la marca del producto: \n");
+    scanf("%s", marca);
+    printf("Ingrese el tipo del producto: \n");
+    scanf("%s", tipo);
+    printf("Ingrese el stock del producto: \n");
+    scanf("%s", cantidad);
+    printf("Ingrese el precio del producto: \n");
+    scanf("%s", precio);
+    List* productosList = searchMap(productos, nombre);
+    Producto* auxProducto = NULL;
+    int encontrado = 0;
+
+    if (productosList == NULL) {
+        productosList = create_list();
+        insertMap(productos, nombre, productosList);
+    }
+    else {
+        auxProducto = first(productosList);
+
+        while (auxProducto != NULL) {
+            if (strcmp(auxProducto->marca, marca) == 0) {
+                encontrado = 1;
+                break;
+            }
+
+            auxProducto = next(productosList);
+        };
+    }
+
+    if (!encontrado) {
+        auxProducto = crearProducto(nombre, marca, tipo, cantidad, precio);
+
+        List* marcasList = searchMap(productosPorMarca, marca);
+
+        if (marcasList == NULL) {
+            marcasList = create_list();
+            insertMap(productosPorMarca, marca, marcasList);
+        }
+
+        List* tiposList = searchMap(productosPorTipo, tipo);
+
+        if (tiposList == NULL) {
+            tiposList = create_list();
+            insertMap(productosPorTipo, tipo, tiposList);
+        }
+        //printf("h %p %p %p %p\n", productosList, marcasList, tiposList, auxProducto);
+
+        push_back(productosList, auxProducto);
+        push_back(marcasList, auxProducto);
+        push_back(tiposList, auxProducto);
+    }
+}

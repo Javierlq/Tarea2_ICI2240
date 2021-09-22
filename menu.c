@@ -82,6 +82,7 @@ void initMenu() {
             case 2:
                 break;
             case 3:
+                anadirProducto(productos, productosPorMarca, productosPorTipo);
                 break;
             case 4:
                 buscarPorCriterio(productosPorTipo, "aseo");

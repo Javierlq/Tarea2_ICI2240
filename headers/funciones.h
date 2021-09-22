@@ -25,3 +25,5 @@ void* crearProducto(char* nombre, char* marca, char* tipo, char* cantidad, char*
 */
 
 void buscarPorCriterio(Map* criterio, char* key);
+
+void anadirProducto(Map* productos, Map* productosPorMarca, Map* productosPorTipo);
